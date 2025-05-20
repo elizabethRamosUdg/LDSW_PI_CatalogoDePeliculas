@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(height: 20),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(200, 50), // width and height
+                      minimumSize: Size(250, 60), // width and height
                     ),
                     child: Text('Catalogo de peliculas'),
                     onPressed: () => Navigator.pushNamed(context, '/catalogo'),
@@ -60,11 +60,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(height: 20),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(200, 50), // width and height
+                      minimumSize: Size(250, 60), // width and height
                     ),
                     child: Text('Administrar'),
-                    onPressed:
-                        () => Navigator.pushNamed(context, '/administracion'),
+                    onPressed: () => Navigator.pushNamed(context, '/admin'),
                   ),
                 ],
               ),
