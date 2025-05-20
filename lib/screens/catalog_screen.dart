@@ -80,7 +80,7 @@ class _MoviesHomePageState extends State<MoviesHomePage> {
                       final year = data['year'] ?? '-';
                       final director = data['director'] ?? '-';
                       final genero = data['genero'] ?? '-';
-                      final sipnosis = data['sipnosis'] ?? '-';
+                      final sinopsis = data['sinopsis'] ?? '-';
                       final imagenURL = data['imageURL'] ?? '-';
 
                       // Regresamos una lista con directorios
@@ -98,7 +98,7 @@ class _MoviesHomePageState extends State<MoviesHomePage> {
                                     year: year,
                                     director: director,
                                     genero: genero,
-                                    sipnosis: sipnosis,
+                                    sinopsis: sinopsis,
                                     imagenURL: imagenURL,
                                   ),
                             ),

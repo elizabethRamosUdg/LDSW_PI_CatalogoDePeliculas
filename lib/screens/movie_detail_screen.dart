@@ -5,7 +5,7 @@ class MovieDetailScreen extends StatelessWidget {
   final String year;
   final String director;
   final String genero;
-  final String sipnosis;
+  final String sinopsis;
   final String imagenURL;
 
   // Constructor para recibir los detalles de la película
@@ -14,7 +14,7 @@ class MovieDetailScreen extends StatelessWidget {
     required this.year,
     required this.director,
     required this.genero,
-    required this.sipnosis,
+    required this.sinopsis,
     required this.imagenURL,
   });
 
@@ -27,10 +27,18 @@ class MovieDetailScreen extends StatelessWidget {
         child: ListView(
           children: [
             // Imagen de la película
-            // Si no hay, no la cargamos la applicacion va a romperse
-            imagenURL != imagenURL.isNotEmpty && imagenURL != '-'
-                ? Image.network(imagenURL)
-                : SizedBox.shrink(),
+            // Es importante poner un catch, por que si la URL esta mal
+            // Rompe la appliacion
+            Image.network(
+              imagenURL,
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) return child;
+                return CircularProgressIndicator(); // Muestra progreso mientras carga
+              },
+              errorBuilder: (context, error, stackTrace) {
+                return Text('Error al cargar la imagen');
+              },
+            ),
             SizedBox(height: 16),
             // Título
             Text(
@@ -46,7 +54,7 @@ class MovieDetailScreen extends StatelessWidget {
             Text('Género: $genero', style: TextStyle(fontSize: 18)),
             SizedBox(height: 8),
             // Sinopsis
-            Text('Sinopsis: $sipnosis', style: TextStyle(fontSize: 16)),
+            Text('Sinopsis: $sinopsis', style: TextStyle(fontSize: 16)),
           ],
         ),
       ),

@@ -34,7 +34,7 @@ class _MoviesHomePageState extends State<MoviesHomePage> {
   final TextEditingController _yearController = TextEditingController();
   final TextEditingController _directorController = TextEditingController();
   final TextEditingController _generoController = TextEditingController();
-  final TextEditingController _sipnosisController = TextEditingController();
+  final TextEditingController _sinopsisController = TextEditingController();
   final TextEditingController _imagenUrlController = TextEditingController();
 
   // Poder leer y crear nuevos documentos a nuestra coleccion en firebase
@@ -52,7 +52,7 @@ class _MoviesHomePageState extends State<MoviesHomePage> {
     final _editYearController = TextEditingController();
     final _editDirectorController = TextEditingController();
     final _editGeneroController = TextEditingController();
-    final _editSipnosisController = TextEditingController();
+    final _editsinopsisController = TextEditingController();
     final _editImagenURLController = TextEditingController();
 
     // Usamos un alert log para hacer esto mas facil
@@ -82,8 +82,8 @@ class _MoviesHomePageState extends State<MoviesHomePage> {
                   decoration: InputDecoration(labelText: 'Genero'),
                 ),
                 TextField(
-                  controller: _editSipnosisController,
-                  decoration: InputDecoration(labelText: 'Sipnosis'),
+                  controller: _editsinopsisController,
+                  decoration: InputDecoration(labelText: 'sinopsis'),
                 ),
                 TextField(
                   controller: _editImagenURLController,
@@ -103,22 +103,22 @@ class _MoviesHomePageState extends State<MoviesHomePage> {
                   final newYear = _editYearController.text.trim();
                   final newDirector = _editDirectorController.text.trim();
                   final newGenero = _editGeneroController.text.trim();
-                  final newSipnosis = _editSipnosisController.text.trim();
-                  final newImageURL = _editSipnosisController.text.trim();
+                  final newsinopsis = _editsinopsisController.text.trim();
+                  final newImageURL = _editsinopsisController.text.trim();
 
                   // Validamos que todos los campos tengan informacion
                   if (newTitle.isNotEmpty &&
                       newYear.isNotEmpty &&
                       newDirector.isNotEmpty &&
                       newGenero.isNotEmpty &&
-                      newSipnosis.isNotEmpty &&
+                      newsinopsis.isNotEmpty &&
                       newImageURL.isNotEmpty) {
                     await _movies.add({
                       'title': newTitle,
                       'year': newYear,
                       'director': newDirector,
                       'genero': newGenero,
-                      'sipnosis': newSipnosis,
+                      'sinopsis': newsinopsis,
                       'imageURL': newImageURL,
                     });
                     Navigator.of(context).pop();
@@ -136,7 +136,7 @@ class _MoviesHomePageState extends State<MoviesHomePage> {
     String currentYear,
     String currentDirector,
     String currentGenero,
-    String currentSipnosis,
+    String currentsinopsis,
     String currentImageURL,
   ) {
     final _editTitleController = TextEditingController(text: currentTitle);
@@ -145,8 +145,8 @@ class _MoviesHomePageState extends State<MoviesHomePage> {
       text: currentDirector,
     );
     final _editGeneroController = TextEditingController(text: currentGenero);
-    final _editSipnosisController = TextEditingController(
-      text: currentSipnosis,
+    final _editsinopsisController = TextEditingController(
+      text: currentsinopsis,
     );
     final _editImagenURLController = TextEditingController(
       text: currentImageURL,
@@ -179,8 +179,8 @@ class _MoviesHomePageState extends State<MoviesHomePage> {
                   decoration: InputDecoration(labelText: 'Genero'),
                 ),
                 TextField(
-                  controller: _editSipnosisController,
-                  decoration: InputDecoration(labelText: 'Sipnosis'),
+                  controller: _editsinopsisController,
+                  decoration: InputDecoration(labelText: 'sinopsis'),
                 ),
                 TextField(
                   controller: _editImagenURLController,
@@ -200,7 +200,7 @@ class _MoviesHomePageState extends State<MoviesHomePage> {
                   final newYear = _editYearController.text.trim();
                   final newDirector = _editDirectorController.text.trim();
                   final newGenero = _editGeneroController.text.trim();
-                  final newSipnosis = _editSipnosisController.text.trim();
+                  final newsinopsis = _editsinopsisController.text.trim();
                   final newImageURL = _editImagenURLController.text.trim();
 
                   // Validamos que todos los campos tengan informacion
@@ -208,14 +208,14 @@ class _MoviesHomePageState extends State<MoviesHomePage> {
                       newYear.isNotEmpty &&
                       newDirector.isNotEmpty &&
                       newGenero.isNotEmpty &&
-                      newSipnosis.isNotEmpty &&
+                      newsinopsis.isNotEmpty &&
                       newImageURL.isNotEmpty) {
                     await _movies.doc(id).update({
                       'title': newTitle,
                       'year': newYear,
                       'director': newDirector,
                       'genero': newGenero,
-                      'sipnosis': newSipnosis,
+                      'sinopsis': newsinopsis,
                       'imageURL': newImageURL,
                     });
                     Navigator.of(context).pop();
@@ -285,7 +285,7 @@ class _MoviesHomePageState extends State<MoviesHomePage> {
                       final year = data['year'] ?? '-';
                       final director = data['director'] ?? '-';
                       final genero = data['genero'] ?? '-';
-                      final sipnosis = data['sipnosis'] ?? '-';
+                      final sinopsis = data['sinopsis'] ?? '-';
                       final imagenURL = data['imageURL'] ?? '-';
 
                       // Regresamos una lista con directorios
@@ -305,7 +305,7 @@ class _MoviesHomePageState extends State<MoviesHomePage> {
                                     year,
                                     director,
                                     genero,
-                                    sipnosis,
+                                    sinopsis,
                                     imagenURL,
                                   ),
                             ),
